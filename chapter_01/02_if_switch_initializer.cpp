@@ -7,7 +7,8 @@
 #include <iostream>
 #include <cstdio>
 #include <map>
-#include <string>
+#include <memory>
+#include <mutex>
 
 template <typename T>
 void print_charcount_cpp11(const T &map, char c)
@@ -60,5 +61,24 @@ int main()
         default:
             std::cout << "You entered something else: " << c << "\n";
         }
+    }
+
+    {
+        std::mutex my_mutex;
+        /* if语句中的初始化块中，创建了一个 std::lock_guard<std::mutex> 对象 lock，自动锁定了 my_mutex */
+        if (std::lock_guard<std::mutex> lock {my_mutex}; true) {
+            std::cout << "Address of lock_guard: " << &lock << std::endl;
+            std::cout << "Address of my_mutex: " << &my_mutex << std::endl;
+        }
+
+        std::weak_ptr<int> weak_pointer = std::make_shared<int>();
+        if (auto shared_pointer (weak_pointer.lock());  shared_pointer != nullptr) {
+            std::cout << "Yes, the shared object does still exist " << std::endl;
+        } else {
+            std::cout << "shared_pointer var is accessible, but a null pointer " << std::endl;
+        }
+        // shared_pointer is not accessible any longer
+
+
     }
 }
