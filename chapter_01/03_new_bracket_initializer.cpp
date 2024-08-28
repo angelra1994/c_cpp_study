@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[])
 {
-    { // C++11 不使用auto声明的括号初始化
+    { // 不使用auto声明的括号初始化
         int x1 = 1;
         int x2 {1};
         int x3 (1);
@@ -33,8 +33,10 @@ int main(int argc, char* argv[])
         std::cout << "v3.size = " << v3.size() << ", i = " << i << std::endl;
     }
 
-    { // C++11 不使用auto声明的括号初始化
-        auto v {1}; // v is int
+    { // 使用auto声明的括号初始化
+        /* auto x{123}; c++11 使用std::initializer_list<int> 会初始化成一个只有一个元素的std 容器，而C++17将会生成一个对应的整型值。*/
+        auto v {1}; // v is int。
+
         /*
          auto w {1, 2}; // error: only single elements in direct auto initialization allowed! (this is new)
          */
@@ -53,11 +55,11 @@ int main(int argc, char* argv[])
          * int x{1.2}; 将会遇到编译错误，初始化列表中的初始值，需要与变量声明的类型完全匹配。即 1.2 需要是int类型数据
          */
 
-        /*
+        /* 一些经验法则
         auto var_name {one_element}; 将会推导出var_name的类型(与one_element一样)。
         auto var_name {element1, element2, ...}; 是非法的，并且无法通过编译。 只能有有一个变量
         auto var_name = {element1, element2, ...}; 将会使用 std::initializer_list<T> 进行初始化，列表中elementN变量的类型均为T。
-         */
+        */
     }
 }
 
