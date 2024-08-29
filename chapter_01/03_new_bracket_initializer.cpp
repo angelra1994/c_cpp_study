@@ -49,6 +49,9 @@ int main(int argc, char* argv[])
         auto z1 = (1, 2, 3.0); // 逗号表达式，z1 = 3.0
         std::cout << "z1 = " << z1 << std::endl;
 
+        std::tuple my_tuple (123, 12.3, "abc");
+        std::cout << "my_tuple = (" << std::get<0>(my_tuple) << ", " << std::get<1>(my_tuple) << ", " << std::get<2>(my_tuple) << ")" << std::endl;
+
         /*
          * {} 与 () 调用构造函数初始化的方式，不同点在于 {} 没有类型的隐式转换，
          * int x(1.2); 和 int x = 1.2; 通过静默的对浮点值进行向下取整，然后将其转换为整型，从而将x的值初始化为1
