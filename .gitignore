@@ -68,3 +68,6 @@ CMakeUserPresets.json
 # Clion
 cmake-build-debug
 .idea
+
+#doc
+doc
