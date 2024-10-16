@@ -46,10 +46,10 @@ void f()
 {
     int num;
     int const * p11 = &num;
-    const int *p1 = &num;  // const修饰了 *p1，不能通过*p1 的方式对内存块中变量进行修改
+    const int *p1 = &num;  //常量指针（指向常量的指针）。const修饰了 *p1，不能通过*p1 的方式对内存块中变量进行修改
     //(*p1)++;  // Cannot apply postfix operator++ to readonly type const int. increment of read-only location '*p1'
     p1++;   // p1存储的地址值可以修改，即p1可以指向其他地址
-    int *const p2 = &num; // const 修饰p2
+    int *const p2 = &num; //指针常量（指针类型的常量） const 修饰p2
     //p2++;      // Cannot apply postfix operator++ to readonly type int* const
     (*p2)++; // 可以使用*p2的方式，修改p2指向的内存
 
