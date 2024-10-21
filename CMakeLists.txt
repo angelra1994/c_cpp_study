@@ -9,8 +9,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
-add_executable(c_cpp_study_main                  src/main.cpp)
-add_executable(float_explain                     src/float_explain.c)
+add_subdirectory(lzy)
 
 add_subdirectory(cpp17_stl_cookbook/chapter_01)
 

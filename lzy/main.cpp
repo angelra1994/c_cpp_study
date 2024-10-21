@@ -3,7 +3,7 @@
 int main()
 {
     std::cout << "Hello, World! " << PROJECT_NAME << std::endl;
-    int n = 10;
+    constexpr int n = 10;
     int array[10];
     for ( int i = 0; i < n; i++)
     {
